@@ -1,0 +1,48 @@
+
+So how internet works :
+
+We'll look at just overview of it, just how things works
+
+Ok so at first we start with physical system to internal system :
+
+So there is 3 types of networks types by which internet is distributed
+
+1. LAN
+2. MAN 
+3. WAN
+
+
+1. LAN
+So, what is LAN, it is your local area network. A network that connects computers and devices within a limited area like a home, office, or school. Usually owned, controlled and managed by a single organization
+
+
+2. MAN
+Man means Metropolitan area network, Often used by municipalities, universities, or large organizations. Interconnects multiple LANs within a city. These are operated by large Internet Service Providers (ISPs).
+
+3. WAN
+Wide area networks: It's where internet begins with, it connects countries, continents with a long very long wire called optical fibre.
+
+
+
+But, How Data Actually Flows :
+
+When you request to a website let say google:
+
+Your computer sends a request through your LAN (your home network)
+Your router forwards this to your ISP network.
+Your ISP routes it through increasingly larger networks.
+The request travels through multiple network switches, each figuring out where to send it next
+Eventually, it reaches google's server in their data centers
+Google's servers process your request and send data back
+The data travels back through the same networks in reverse
+Your computer receives and displays the webpage
+
+The entire process involves numerous protocols working together, including TCP/IP (how data is packaged and addressed), DNS (translating google.com to an IP address), and HTTP/HTTPS (how web data is formatted).
+
+
+
+This is not only sole method to get internet, There is other way by which you can connect to Internet, but it's slow as compared to optical fibres. But it has its own use case, like where optical fibres can't have reach, this way do the job
+
+1. Satellite
+2. Wireless technologicies
+3. Laser networks

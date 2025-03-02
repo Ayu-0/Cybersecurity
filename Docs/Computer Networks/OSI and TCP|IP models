@@ -1,0 +1,30 @@
+# OSI AND TCP/IP MODELS -
+
+These two are standard framework to connect to internet (widely adopted standards)
+
+OSI : Open source interconneted models ( conceptual framework )
+TCP/IP : Foundation of Internet communications and is more practical compared to the OSI model
+
+OSI model Layers : 
+1. Application
+2. Presentation
+3. Session
+4. Transport
+5. Network 
+6. Data Link
+7. Physical
+
+
+TCP/IP Model Layers :
+1. Application
+2. Transport
+3. Network
+4. Data-Link
+5. Physical
+
+
+
+1. Application layer : 
+
+ - User interacts with it
+ - 

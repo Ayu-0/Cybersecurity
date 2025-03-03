@@ -2,8 +2,7 @@
 So how internet works :
 
 We'll look at just overview of it, just how things works
-
-Ok so at first we start with physical system to internal system :
+Ok so at first we start with physical system to internal mechanism :
 
 So there is 3 types of networks types by which internet is distributed
 
@@ -45,3 +44,16 @@ This is not only sole method to get internet, There is other way by which you ca
 1. Satellite
 2. Wireless technologicies
 3. Laser networks
+
+
+# How data is transmitted over the internet ?
+
+Internet works using TCP/IP (also OSI but not practical) as main protocol -
+
+It is commonly known as TCP/IP because the foundational protocols in the suite are the Transmission Control Protocol (TCP) and the Internet Protocol (IP). The Internet protocol suite is the conceptual model and set of communications protocols used on the Internet and similar computer networks. It is commonly known as TCP/IP because the foundational protocols in the suite are the Transmission Control Protocol (TCP) and the Internet Protocol (IP).
+
+TCP/IP, is a suite of communication protocols used to interconnect network devices on the internet. TCP/IP can also be used as a communications protocol in a private network (an intranet or an extranet).
+
+There are two IP protocols, TCP and UDP. There are 65335 ports that can be assigned to each. Per IANA, the first 1024 (0–1023, so count 0 as a port, too) ports are reserved for specific standardized services. So there are 2048 ports reserved for standardized protocols- 1024 for TCP, 1024 for UDP.
+
+The Internet works by using a protocol called TCP/IP, or Transmission Control Protocol/Internet Protocol. ... In base terms, TCP/IP allows one computer to talk to another computer via the Internet through compiling packets of data and sending them to right location.

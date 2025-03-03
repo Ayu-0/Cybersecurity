@@ -1,18 +1,18 @@
 # OSI AND TCP/IP MODELS -
 
-These two are standard framework to connect to internet (widely adopted standards)
+Basically it's a internet protocol suite, it's a framework that organizes the protocols used for communication on the internet. You can say it's a main protocol.
 
 OSI : Open source interconneted models ( conceptual framework )
 TCP/IP : Foundation of Internet communications and is more practical compared to the OSI model
 
 OSI model Layers : 
-1. Application
-2. Presentation
-3. Session
-4. Transport
-5. Network 
-6. Data Link
-7. Physical
+1. Application - Provides an interface for the end-user
+2. Presentation - Transaltes data from computer code into network-formatted code
+3. Session - Establishes request/response interaction between two network hosts
+4. Transport - Manager traffic flow through the network layer
+5. Network  - Determines what path data packets will be taking to get from one network to another
+6. Data Link- Breaks data into frames that will be transmitted over a physical layer
+7. Physical - Converts digital data into optical, electrical or radio signals
 
 
 TCP/IP Model Layers :
@@ -26,5 +26,17 @@ TCP/IP Model Layers :
 
 1. Application layer : 
 
- - User interacts with it
- - 
+ - It does directly interact with user applications and network services.
+ - It ensure that data is correctly formatted and routed
+ - It ensure proper communication between devices using protocols
+
+Network Services - Network service is an application running at the network application layer and above, that provides data storage, manipulation, presentation, communication or other capability which is often implemented using a client–server or peer-to-peer architecture 
+
+Client-Server Architecture - In client-server architecture, client requests service and server provides that service
+
+Peer-to-peer - In which each device acts as both, as a server and a client.
+
+
+* Common protocols used in application layer -
+
+ 1. HTTP: Hypertext transfer protocol 

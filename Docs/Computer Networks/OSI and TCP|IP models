@@ -26,17 +26,49 @@ TCP/IP Model Layers :
 
 1. Application layer : 
 
- - It does directly interact with user applications and network services.
- - It ensure that data is correctly formatted and routed
- - It ensure proper communication between devices using protocols
+ It acts as the bridge between a user's application and the network layer, allowing them to interact with each other by providing the necessary protocols and services for communication across a network.
 
-Network Services - Network service is an application running at the network application layer and above, that provides data storage, manipulation, presentation, communication or other capability which is often implemented using a client–server or peer-to-peer architecture 
+Network Services - Network service is an application running at the application layer and above, that provides data storage, manipulation, presentation, communication or other capability which is often implemented using a client–server or peer-to-peer architecture 
 
 Client-Server Architecture - In client-server architecture, client requests service and server provides that service
 
 Peer-to-peer - In which each device acts as both, as a server and a client.
 
 
-* Common protocols used in application layer -
+## Internet Protocols : 
+A set of rules that allows computers and other devices to communicate over Internet.
 
- 1. HTTP: Hypertext transfer protocol 
+
+$ Working of Internet Protocol :
+
+Dividing Data into Packets: When you send information over the internet, IP splits it into small parts called packets. Each packet contains a piece of the data and the address of where it needs to go.
+
+Addressing: Every device connected to the internet has its own IP address. This address helps identify where the data is being sent from and where it should be delivered.
+
+Routing the Packets: As the packets travel across the internet, they pass through several devices called routers. These routers help direct the packets toward the correct destination, like how mail is sorted at different post offices.
+
+Reassemble the Data: Once all the packets arrive at the destination, they are put back together to recreate the original message or file.
+
+Handling Missing Packets: If some packets don’t arrive, the system can request that they be sent again, making sure the complete data is received.
+
+
+$ Why we need protocols ?
+It manage data flow control and access control in communication networks. Since sender and receiver devices operate at different speeds and locations, protocols help regulate transmission rates to prevent data loss, prevents collisions and data corruptions.
+
+
+
+## How application layer talks to each other ?
+
+- A user interacts with an application (e.g., opening a web browser to visit a website).
+- The application prepares the data to send (e.g., an HTTP request for a webpage).
+- The application uses a specific Application Layer Protocol (e.g., HTTP for web browsing).
+- It structures the message according to the protocol’s rules.
+- The application hands off data to the next layer (Transport Layer) via (TCP or UDP).
+
+
+* Common protocols used in application layer -
+eg;  HTTP, DHCP, FTP, SMTP, POP3, SSH, VNC, TFTP, IMAP, WebSocket etc... 
+
+Socket - It's a two way end-point communication between application layer and transport layer
+
+ 1. HTTP: (Hypertext transfer protocol)  

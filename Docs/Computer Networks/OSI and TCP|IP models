@@ -40,7 +40,6 @@ A set of rules that allows computers and other devices to communicate over Inter
 
 
 $ Working of Internet Protocol :
-
 Dividing Data into Packets: When you send information over the internet, IP splits it into small parts called packets. Each packet contains a piece of the data and the address of where it needs to go.
 
 Addressing: Every device connected to the internet has its own IP address. This address helps identify where the data is being sent from and where it should be delivered.
@@ -66,9 +65,27 @@ It manage data flow control and access control in communication networks. Since 
 - The application hands off data to the next layer (Transport Layer) via (TCP or UDP).
 
 
+## Sockets ?
+
+Socket - It's a two way end-point communication between application layer and transport layer. Sockets act like a pipe between the application layer and the transport layer
+
+ - Applications (like web browsers, games, or chat apps) don’t directly talk to the network—they talk to the transport layer through sockets.
+ - It enables multiple applications to share the same network.
+ - It allows the transport layer (TCP/UDP) to work independently.
+ - Sockets identified by combination of the followings : (Source IP, Source Port, Destination IP,     Destination Port, Protocol) eg, - If your computer (192.168.1.10) connects to example.com (93.184.216.34), the socket looks like this: (192.168.1.10:50000 → 93.184.216.34:443, TCP)
+
+$ How many sockets can be created and how sockets assigned ?
+  - No. of Sockets varies according to your :
+1️⃣ Number of Available Ports
+2️⃣ Operating System Limits
+3️⃣ System Resources (RAM, CPU, File Descriptors)
+4️⃣ Protocol Type (TCP, UDP)
+5️⃣ Application Behavior (Long vs Short Connections)
+
+-  Sockets assigned whenever clients connect to the server, it exchange information and then disconnect.
+
+
 * Common protocols used in application layer -
 eg;  HTTP, DHCP, FTP, SMTP, POP3, SSH, VNC, TFTP, IMAP, WebSocket etc... 
-
-Socket - It's a two way end-point communication between application layer and transport layer
 
  1. HTTP: (Hypertext transfer protocol)  

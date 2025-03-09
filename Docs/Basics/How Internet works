@@ -57,3 +57,10 @@ TCP/IP, is a suite of communication protocols used to interconnect network devic
 There are two IP protocols, TCP and UDP. There are 65335 ports that can be assigned to each. Per IANA, the first 1024 (0–1023, so count 0 as a port, too) ports are reserved for specific standardized services. So there are 2048 ports reserved for standardized protocols- 1024 for TCP, 1024 for UDP.
 
 The Internet works by using a protocol called TCP/IP, or Transmission Control Protocol/Internet Protocol. ... In base terms, TCP/IP allows one computer to talk to another computer via the Internet through compiling packets of data and sending them to right location.
+
+
+In simple terms :
+When we talk about data transfer across the internet, we're actually dealing with two essential requirements for successful communication 
+
+1. Physical data transmission - Can the bits and bytes physically move from point A to point B?
+2. Semantic understanding - Can the receiving end interpret the meaning of those bits and bytes?

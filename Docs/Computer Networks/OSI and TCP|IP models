@@ -52,7 +52,7 @@ Handling Missing Packets: If some packets don’t arrive, the system can request
 
 
 $ Why we need protocols ?
-It manage data flow control and access control in communication networks. Since sender and receiver devices operate at different speeds and locations, protocols help regulate transmission rates to prevent data loss, prevents collisions and data corruptions.
+Protocols help make sure that data moves smoothly and securely between devices on a network. Since sender and receiver devices operate at different speeds and locations, protocols help regulate transmission rates to prevent data loss, prevents collisions and data corruptions.
 
 
 
@@ -65,27 +65,72 @@ It manage data flow control and access control in communication networks. Since 
 - The application hands off data to the next layer (Transport Layer) via (TCP or UDP).
 
 
-## Sockets ?
+## Sockets :
 
-Socket - It's a two way end-point communication between application layer and transport layer. Sockets act like a pipe between the application layer and the transport layer
+Socket - It's a two way end-point communication between application layer process and transport layer. Sockets act like a pipe between the application layer and the transport layer, It's fucntion is to connects both layers.
 
- - Applications (like web browsers, games, or chat apps) don’t directly talk to the network—they talk to the transport layer through sockets.
+ - Applications (like web browsers, games, or chat apps) don’t directly talk to the network, they talk to the transport layer through sockets.
  - It enables multiple applications to share the same network.
  - It allows the transport layer (TCP/UDP) to work independently.
  - Sockets identified by combination of the followings : (Source IP, Source Port, Destination IP,     Destination Port, Protocol) eg, - If your computer (192.168.1.10) connects to example.com (93.184.216.34), the socket looks like this: (192.168.1.10:50000 → 93.184.216.34:443, TCP)
-
-$ How many sockets can be created and how sockets assigned ?
-  - No. of Sockets varies according to your :
-1️⃣ Number of Available Ports
-2️⃣ Operating System Limits
-3️⃣ System Resources (RAM, CPU, File Descriptors)
-4️⃣ Protocol Type (TCP, UDP)
-5️⃣ Application Behavior (Long vs Short Connections)
-
--  Sockets assigned whenever clients connect to the server, it exchange information and then disconnect.
+- Sockets assigned whenever clients connect to the server, it exchange information and then disconnect.
+- No. of Sockets varies according to your no. of ports, OS limits, protocol types, system resources etc..
 
 
-* Common protocols used in application layer -
+## Ports : 
+
+ - In simple terms It allow computers to easily differentiate between different kinds of traffic.
+ - IP addresses identify devices on a network, while port numbers pinpoint specific services or applications running on those devices, like If your home adderess is your IP address then the room in your house is like port numbers, each and every room have different use case, Isn't
+ - Port numbers are 16-bit numerical identifiers (ranging from 0 to 65535) that serves as a logical endpoint for specific types of network communications
+- Ports allow a single computer with one IP address to run multiple network services simultaneously. Each service "listens" on a specific port number.
+- Ports enable multiple connections to exist simultaneously between the same two computers. Eg, you might have several browser tabs open connecting to the same web server, but each connection uses different port numbers on your computer.
+
+Ports are categorized into three ranges:
+
+Port-Range	      Port-Numbers	 Usage
+Reserved Ports  	0 - 1023	     Reserved for standard services (HTTP, FTP, SSH, DNS)
+Registered Ports	1024 - 49151	 Used by software vendors (e.g., games, databases, proprietary services)
+Private Ports   	49152 - 65535	 Temporary ports assigned by the OS for client connections
+
+- Port 0 is a wildcard port that tells the system to find a suitable port number. Unlike most port numbers, port 0 is a reserved port in TCP/IP networking, meaning that it should not be used in TCP or UDP messages
+ 
+ 
+### Ephermal Ports - 
+In general, ephemeral ports are in the range of 1024 to 65535. It's just temporary ports used by client application and are used only for the duration of the connection. 
+
+I.) When multiple connections of the same protocol type (like multiple HTTP connections) are established, each connection uses the same protocol (HTTP) and connects to the same server port (80), but your operating system assigns different ephemeral ports (54001, 54002, 54003) to each connection. understand like this, 
+When your computer (client) wants to make multiple connections to that server:
+
+Connection 1: Your OS assigns port 54001 → connects directly to server port 80
+Connection 2: Your OS assigns port 54002 → connects directly to server port 80
+
+II.) When a client initiates a connection to a server, the server's operating system checks the protocol requested by the client (e.g., HTTP, FTP, SSH, etc.) and matches it with the reserved port number (e.g., 80 for HTTP, 21 for FTP, etc.). If there's a match, the server's operating system uses the reserved port as the "main door" or the "well-known port" for the connection.
+
+III.) When a connection is established between your computer and a web server, the two ports (server port and ephermal port) form what's called a "socket pair" or "connection tuple" that uniquely identifies the connection. This connection tuple consists of 4 pieces of information:
+
+Source IP address (your computer)
+Source port (your ephemeral port, e.g., 54001)
+Destination IP address (the server)
+Destination port (port 80 on the server)
+
+IV.) when an application creates a socket, it specifies the protocol (for example, HTTP, HTTPS) via the socket API. This protocol choice is stored in the socket's settings, so when an ephemeral port is assigned as the local endpoint of the connection, it's already tied to a socket that uses a specific protocol.
+
+
+### Port forwarding :
+Port forwarding is a technique to make private network devices accessible over the internet.
+
+- When a request comes in on a specific port of your router’s public IP, port forwarding tells the router, Send this traffic to the device at this private IP address on the same (or a different) port. 
+In simply, If someone from the internet tries to connect to me on a specific port, send them to this specific device on my private network
+
+- By default, routers do not allow unsolicited incoming traffic from the internet for security reasons.
+Port forwarding creates a rule to direct incoming traffic on specific ports to a device on your private network.
+
+- When a request is made to your public IP on the specified port, the router forwards it to the designated private IP and port. This allows external access to services running on your private network.
+
+- To use port forwarding assign a static IP to the device on your local network to ensure the port forwarding rule works consistently. Dynamic IP breaks the forwarding rule, cause each time it'll changed
+
+
+### Common protocols used in application layer -
 eg;  HTTP, DHCP, FTP, SMTP, POP3, SSH, VNC, TFTP, IMAP, WebSocket etc... 
 
  1. HTTP: (Hypertext transfer protocol)  

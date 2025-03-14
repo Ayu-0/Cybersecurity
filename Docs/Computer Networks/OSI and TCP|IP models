@@ -127,10 +127,142 @@ Port forwarding creates a rule to direct incoming traffic on specific ports to a
 
 - When a request is made to your public IP on the specified port, the router forwards it to the designated private IP and port. This allows external access to services running on your private network.
 
-- To use port forwarding assign a static IP to the device on your local network to ensure the port forwarding rule works consistently. Dynamic IP breaks the forwarding rule, cause each time it'll changed
+- To use port forwarding assign a static IP to the device on your local network to ensure the port forwarding rule works consistently. Dynamic IP breaks the forwarding rule, cause each time it's changed.
 
 
 ### Common protocols used in application layer -
 eg;  HTTP, DHCP, FTP, SMTP, POP3, SSH, VNC, TFTP, IMAP, WebSocket etc... 
 
- 1. HTTP: (Hypertext transfer protocol)  
+ I. HTTP (Hypertext transfer protocol) :
+
+ - It's a client-server protocol and it tells us how you request this data from the server and also tells us how the server will send back data to the client.
+ - When client is to make request to the server, it's HTTP request, and when server send response back to the client, it's known as HTTP response
+ - HTPP uses TCP protocol, since we don't have to loose data over connections, it first ensure connection to the both ends, then transfer the data
+ - It's stateless in nature means the server does not retain any session information between requests, means everytime you visit the website, it'll detect as a new user, But when you visit any website over and over again, it's not like that, it'll not treat you as a new user every time, it'll detect you visiting again,how? It uses something called Cookies. So, cookies is a unique string stored on client browser that saves your browsing activity. 
+
+
+i.) HTTP METHODS :
+It's a set of request methods that specify actions to perform on a resource.
+
+GET: Retrieve data from the server.
+POST: Send data to the server (e.g., form submissions).
+PUT: Update existing data on the server.
+OPTIONS: Used to request information about the communication options available(like GET, POST, PUT, etc.) for a target resource.
+DELETE: Remove data from the server, etc...
+ 
+ii.) HTTPS Status Codes :
+It's a three-digit code that a web server sends to a client's browser to indicate the status of a request
+
+2xx OK: The request was successful.
+3xx Redirection: further action is required to complete the request, often a redirect to a different URL
+4xx Not Found: Request cannot be fulfilled due to a problem with the client's request
+5xx Internal Server Error: The server encountered an error while processing the request
+
+iii.) Headers and Body :
+HTTP messages are divided into two parts:
+Headers: Contain metadata about the request or response (content type, length, caching policies, etc..)
+Body: Contains the actual data (HTML, JSON, images, etc.) being transmitted. 
+
+HTTPS : It's a HTTP with an added security layer. HTTPS encrypts the data using Transport Layer Security (TLS) to ensure that the communication is secure, private, and tamper-proof.
+
+
+II. SMTP (simple mail transfer protocol) :
+
+- It's a protocol used to send mail between mail servers, it operates at application layer. 
+- It's a connection oriented protocol and uses TCP. Typically operates on port 25 (unencrypted), 587 (with TLS/STARTTLS)
+- How it works - 
+ When you click “send”, your email client opens a TCP connection with an SMTP server.
+ The client and server exchange commands (e.g., EHLO/HELO, MAIL FROM, RCPT TO) to verify identities and set up the transmission.     The email content is sent as a series of text commands, the server responds with status codes (like 250 OK or 354 Start Input).
+ The SMTP server then uses DNS (MX records) to determine the next hop and transfers the email along the delivery chain.
+
+- SMTP operates in Store-and-Forward Method: Each server receives the complete message, stores it temporarily, then forwards it to the next server until it reaches the recipient mail server.
+- SMTP doesn't have size limits, many mail servers impose restrictions to manage bandwidth.
+
+- Understand with example, Let's say you want to send mail via gmail to outlook :
+You compose an email in your client (gmail).
+Your email client connects to your email provider's SMTP server(connects to Google's SMTP server).
+The SMTP server accepts your email and looks at the recipient's address to determine where to send it. This involves checking the domain part of the email address (the part after @) through the DNS system.
+DNS provides MX (Mail Exchange) records that tell your provider's SMTP server which mail servers are responsible for accepting mail for the recipient's domain.
+Your provider's SMTP server connects to the recipient's mail server (Outlook.com address) and transfers the email using the SMTP protocol.
+The recipient's mail server receives the email and stores it in the recipient's mailbox on their server.
+
+- When you check your email via a browser or an email client, the application connects to the mail server using a receiving protocol (typically POP3 or IMAP)
+- The server then sends the stored messages to the client, where they’re rendered for you to read. This process doesn’t involve any special “conversion” between protocols, it’s simply the retrieval of email data from the server to your application.
+
+
+III. DNS  (Domain name system) :
+
+- You can say it's a phonbook of Internet. By go with technical definition it just translate human readble domain names to IP addr. that computers can understand.
+
+- How does it works?
+Ok, so when you type google.com in browser, the system checks the local DNS cache first.
+If the IP is found in the cache, the browser uses it. If not, it sends a DNS query to a recursive resolver (usually provided by the ISP or a public DNS service like Google’s 8.8.8.8 or Cloudflare’s 1.1.1.1). If the resolver has a cached record, it returns the IP address.
+
+If not, it queries the root DNS servers.
+The resolver asks the root servers (.) where to find example.com.
+The root server doesn’t have the answer but directs the resolver to the appropriate TLD (Top-Level Domain) name server, 
+such as .com servers for example.com.
+
+The resolver queries the TLD name server (e.g., .com name servers or .org).
+The TLD server provides the address of the authoritative name server for example.com.
+
+The resolver queries the authoritative server, which holds the DNS records for example.com.
+The server responds with the A record (IPv4) or AAAA record (IPv6), providing the IP address of www.example.com.
+Resolver Caches and Returns the IP
+
+The resolver caches the response for future requests.
+It sends the IP address back to the user’s device.
+User’s Device Connects to the Server and establishes a connection to the IP address and loads the website.
+
+* Domain Name Hierarchy :
+
+Level	               Example	                   Description
+Root	               .	                       The invisible root domain
+TLD	                   .uk	                       Country-code TLD (ccTLD)
+Second-Level Domain    co.uk	                   Used for commercial entities in the UK
+Third-Level Domain	   example.co.uk	           The registered domain
+Fourth-Level Domain	   sales.example.co.uk	       A subdomain under example.co.uk
+
+a) Root Domain (.)
+The highest level of the DNS hierarchy.
+Represented by an implicit dot (.) at the end of a domain name, but usually omitted.
+Root-level domains are managed by the Internet Corporation for Assigned Names and Numbers (ICANN), which is responsible for coordinating the global domain name system. ICANN has delegated the management of TLDs to various organizations, known as domain name registries, which are responsible for managing the registration of domain names within their respective TLDs
+
+b) Top-Level Domain (TLD)
+The rightmost part of a domain (e.g., .com, .org, .net).
+Types of TLDs:
+gTLDs (Generic TLDs): .com, .net, .org, .info
+ccTLDs (Country-Code TLDs): .us, .uk, .in, .jp
+sTLDs (Sponsored TLDs): .gov, .edu, .mil
+✅ Example: In example.com, .com is the TLD.
+
+c) Second-Level Domain (SLD)
+The name directly to the left of the TLD.
+Typically, this is the main domain name registered by a user or business.
+Example: In example.com, example is the second-level domain.
+✅ SLDs are unique within a TLD.
+For example -
+google.com
+google.org
+google.net
+Each is a different domain, even though "google" is the SLD.
+
+d) Third-Level Domain (Subdomain)
+Any domain name to the left of the second-level domain.
+Subdomains are part of the main domain but can point to different services.
+Example:
+www.example.com → www is a third-level domain (subdomain of example.com).
+mail.example.com → mail is another subdomain.
+
+/* Sometimes switching to diff DNS have better ping in games and also you can acess sites that is blocked. How?
+- Some dns responds faster than others
+- Provides optimized routing, that reduces no. of hops
+- There maybe also problem on device, on network traffic managements that slows you down
+and for some DNS block access to some sites while others allow it or some have outdated dns server cache records
+
+
+
+
+2. Transport Layer :
+
+- 

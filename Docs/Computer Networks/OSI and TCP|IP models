@@ -266,13 +266,13 @@ and for some DNS block access to some sites while others allow it or some have o
 2. Transport Layer :
 
 - It ensures that data sent from one computer reaches the correct application on another computer reliably or quickly (TCP or UDP)
-- From one network to another network, data transferred by network Layer, the actual transportation from one computer to another but  within the computer transportation of data from network to application is done by transport layer. eg, Let say you're sending whatsapp msg to friend, okay so the message is deliever over to your computer by network layer, but when the message reaches your computer, it had no idea what to do and where to send with the data, so transport layer do its job from here, transport layer send your data to correct application where your whatsapp mssg will be recieved.
-- It just recieves or send data to network layer (using port numbers)
+- From one network to another network, data transferred by network Layer, the actual transportation from one computer to another but  within the computer transportation of data from network to application or application to network is done by transport layer.
+- The data actually moves from higher layers down to lower layers on the sending side, then up from lower layers to higher layers on the receiving side.
 - In the transport layer, data transmission is identified using sockets, which consist of an IP address and port number. Each application creates a socket when sending data from the application layer to the transport layer, a process called multiplexing. On the receiving end, data moves from the network layer to the transport layer, which checks the socket information and directs it to the appropriate application, known as demultiplexing.
 - Sockets have unique  identifiers, and that each segment have special fields that indicate the socket to which the segment is to be delivered. These special fields, are the source port number field and the destination port number field
 
 
-### Why Do We Need the Transport Layer?
+## Why Do We Need the Transport Layer?
 Imagine you are using your laptop connected to the internet, and you open multiple applications:
 
 YouTube (streaming video)
@@ -285,8 +285,7 @@ The Transport Layer solves this problem by:
 ✔ Splitting large data into smaller chunks (segmentation) for transmission.
 ✔ Ensuring data arrives correctly and in order (in TCP-based applications).
 
-### How the Transport Layer Works ?
-
+## How the Transport Layer Works ?
 A. Process-to-Process Communication (Using Ports)
 Each running application has a unique port number to distinguish it from others.
 
@@ -312,11 +311,10 @@ Example: Sending a 10 MB file via TCP
 
 What if a chunk is lost?
 ✔ TCP detects the missing segment and requests a retransmission.
-✔ UDP does NOT retransmit missing segments (useful for live streaming, where lost packets don’t matter much).
 
 
-### Main Protocols of the Transport Layer
-The transport layer primarily uses two protocols:
+## Main Protocols of the Transport Layer
+The transport layer operates primarily through two protocols:
 
 TCP (Transmission Control Protocol) → Reliable, ordered delivery.
 UDP (User Datagram Protocol) → Fast but unreliable delivery.
@@ -328,49 +326,92 @@ Congestion Control	    Avoids overloading the network	                          
 Speed	                Slower due to reliability checks	                           Faster, used in real-time applications
 Examples            	(HTTP, HTTPS),(SMTP), (FTP)	                                   Online gaming,streaming, VoIP calls
 
-A. TCP (Transmission Control Protocol) - Reliable Delivery
+A.) TCP (Transmission Control Protocol) -
 TCP is used when reliability is important, like sending emails, loading web pages, or downloading files.
 
-TCP in Action:
-i). Connection Establishment (Three-Way Handshake)
-Before sending data, TCP establishes a connection:
+/* How TCP works:
 
-1️⃣ Client (Sender) sends SYN (Synchronize)
-
+i) Connection Establishment (Three-Way Handshake): Before sending data, TCP establishes a connection:
+1️⃣ Client (Sender) sends SYN(SYN is short for "synchronize" and it represents the first message in TCP's three-way handshake process)
 "Hey, I want to talk!"
 2️⃣ Server replies with SYN-ACK (Synchronize + Acknowledge)
 "Okay, I'm ready. Let’s start!"
-3️⃣ Client sends ACK (Acknowledge)
+3️⃣ Client sends ACK (Acknowledge) (ACK used to confirm that the data is recieved)
 "Great, let’s go!"
 Now, the connection is established, and data can be transferred.
 
-ii). Reliable Data Transmission
+ii) Reliable Data Transmission
 TCP ensures all packets arrive correctly:
 ✔ If a packet is lost, the receiver asks for retransmission.
 ✔ Packets are reassembled in the correct order using sequence numbers.
-
-Example: Downloading a file via FTP (TCP)
-
+Eg., Downloading a file via FTP (TCP)
 Your computer requests a file (TCP SYN).
 The server starts sending the file in small chunks (segments).
-Each chunk is acknowledged (ACK) before the next is sent.
+Each chunk is acknowledged (ACK packets) before the next is sent.
 If a chunk is lost, it is retransmitted.
-iii). Connection Termination (Four-Way Handshake)
-Once data transfer is complete, TCP gracefully closes the connection:
+-> ACK packets - data packet sent in a network communication to signal that another packet has been received 
 
+iii) Connection Termination (Four-Way Handshake)
+Once data transfer is complete, TCP gracefully closes the connection:
 1️⃣ Client sends FIN (Finish) → "I’m done sending."
 2️⃣ Server replies with ACK → "Okay, noted."
 3️⃣ Server sends FIN → "I’m done too."
 4️⃣ Client replies with ACK → "Goodbye!"
 
-B. UDP (User Datagram Protocol) - Fast but Unreliable
+
+B.) UDP (User Datagram Protocol) - Fast but Unreliable
 UDP is used when speed is more important than accuracy, like video streaming, VoIP calls, and online gaming.
 
+/* How UDP works:
 ✔ No connection setup (No handshake) → Just sends data immediately.
 ✔ No error checking → If a packet is lost, it is ignored.
 
-Example: Online Gaming (Call of Duty, FIFA, etc.)
-
+Eg., Online Gaming (Call of Duty, FIFA, etc.)
 UDP sends game movements instantly.
 If a packet is lost, it’s ignored (the game keeps going).
 TCP would be too slow because retransmissions would cause lag.
+
+
+## TCP Segment Structure (Header Fields) :
+Field	                     Size (bits)	        Description
+Source Port	                 16	                    Identifies the sending application (process).
+Destination Port	         16	                    Identifies the receiving application (process).
+Sequence Number	             32	                    Keeps track of the order of sent data.
+Acknowledgment Number	     32	                    Confirms received data (next expected byte).
+Data Offset (Header Length)	 4	                    Specifies the size of the TCP header.
+Reserved	                 3	                    Reserved for future use (always set to 0).
+Flags (Control Bits)	     9	                    Control signals (e.g., SYN, ACK, FIN, RST, etc.).
+Window Size	                 16	                    Controls flow (how much data can be received at once).
+Checksum	                 16	                    Ensures data integrity (error checking).
+Urgent Pointer	             16	                    Used if the URG flag is set (priority data).
+Options	                     Variable	            Optional settings (e.g., Maximum Segment Size).
+Padding	                     Variable           	Ensures the header is multiples of 32 bits.
+Data	                     Variable	            The actual payload being transmitted.
+
+## TCP Flags (Control Bits)
+Flag	Meaning
+SYN	    Initiates a connection.
+ACK	    Acknowledges received data.
+FIN	    Terminates a connection.
+RST	    Resets a connection.
+PSH	    Pushes data immediately to the application.
+URG	    Indicates urgent data.
+
+## UDP segment Structure (Header Fields) :
+Field	           Size(bits)    Description
+Source Port	       16	         Identifies the sending application.
+Destination Port   16	         Identifies the receiving application.
+Length	           16	         Specifies the total length of the UDP segment (header + data).
+Checksum	       16	         Error detection (optional; may be set to 0 if unused).
+Data	           Variable	     The actual payload being transmitted.
+
+
+### Congesation control -
+
+
+
+It's a mechanism in TCP protocol to control excess data traffic to a network.
+
+3. Network Layer :
+
+- 

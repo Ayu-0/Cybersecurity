@@ -1,0 +1,36 @@
+# Transmission Media : 
+Physical path between the transmitter and the receiver that carry data signals between devices, acting as the foundation for communication networks
+
+## Terminology- 
+- Segment length – The signal degrades for each type of media after traveling a certain distance to the point where it becomes unintelligible. This distance is referred to as the segment length.
+- Attenuation – The loss of signal strength when traveling a distance is called attenuation. Measured in decibels (DB).
+Bandwidth – Amount of data that can travel through the cable in a unit period of time. Measure in kbps, Mbps, etc.
+- Interference – Each cable is susceptible to certain forms of external noise. This is called EMI (Electromagnetic Interference) or RFI (Radio frequency interference)
+- Crosstalk – When a signal carrying conductor is placed near another signal carrying conductor. Interference is generated in the other cable. This is called crosstalk.
+
+
+# Type of transmission media:
+
+1. Guided Transmission Media -
+- You can say it's wired transmission media
+- Physical pathways that use cables or wires to transmit data signals from one device to another
+- Types: Coaxial Cable, Twisted-Pair Cable, Fiber-optic Cable
+
+## Types of Guided transmission media :
+
+I.) Twisted Pair Cable :
+- Twisted pair cabling consists of pairs of insulated copper wires that are twisted together in a helical form. This twisting serves a critical purpose: it reduces electromagnetic interference (EMI) and crosstalk between adjacent pairs. The twisting pattern creates opposing electromagnetic fields that effectively cancel each other out, substantially reducing the cable's susceptibility to external interference and signal leakage.
+Unshielded Twisted Pair (UTP)
+UTP represents the most widely deployed form of twisted pair cabling, particularly in local area network (LAN) environments. It features multiple pairs of twisted copper wires enclosed within a standard plastic jacket without additional shielding.
+The TIA/EIA-568 standard categorizes UTP cables based on their performance characteristics:
+
+
+Shielded Twisted Pair (STP)
+STP incorporates additional metallic shielding to provide enhanced protection against electromagnetic interference. This makes it particularly suitable for industrial environments and areas with high electromagnetic noise levels.
+Shielding Configurations:
+
+
+2. Unguided Transmission Media -
+- It's a wireless means of transmission
+- Does not need a physical medium to connect to network nodes or servers.
+- Eg., Radio waves, Infrared, microwave 

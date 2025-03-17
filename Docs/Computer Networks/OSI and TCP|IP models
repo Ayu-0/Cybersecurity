@@ -408,7 +408,9 @@ Data	           Variable	     The actual payload being transmitted.
 
 ### Congesation control -
 
-
+### Timers
+### Checksums
+### 
 
 It's a mechanism in TCP protocol to control excess data traffic to a network.
 

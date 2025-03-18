@@ -1,5 +1,5 @@
 # Transmission Media : 
-Physical path between the transmitter and the receiver that carry data signals between devices, acting as the foundation for communication networks
+Transmission media refers to the physical or wireless pathways through which data signals are transmitted from one device to another. It serves as the foundation for communication networks by providing the necessary means for data to travel.
 
 ## Terminology- 
 - Segment length – The signal degrades for each type of media after traveling a certain distance to the point where it becomes unintelligible. This distance is referred to as the segment length.
@@ -154,3 +154,18 @@ Easy to Build into Devices
 Line of Sight Requirement
 Limited Range
 High Attenuation
+
+
+
+
+?. What are the causes of Transmission Impairment.
+Transmission impairment refers to the degradation or weakening of signals as they travel from the sender to the receiver. This can happen in various communication systems, such as phone networks, internet connections, and many others.
+
+*/. common causes of transmission impairment.
+Attenuation by Physical Barriers
+Interference from Other Signals
+Equipment Failure or Malfunction
+Environmental Factors
+Bandwidth Limitations
+Signal Compression
+Digital Signal Processing Errors

@@ -1,16 +1,18 @@
 
-So how internet works :
+We'll look at just overview of it, just how things works, Ok
+So at first we start with physical system then go to internal mechanism :
 
-We'll look at just overview of it, just how things works
-Ok so at first we start with physical system to internal mechanism :
+? What is internet.
+The Internet is a global network of interconnected computers and servers that communicate with each other using standardized protocols. It allows billions of devices (such as computers, smartphones, and servers) to share and exchange information across the world
 
-So Internet is  there is 3 types of networks types by which internet is distributed
+? How Internet is Provided -
+Undersea Cables: Physical cables that connect continents and allow data to cross oceans.
+Satellites: For connecting remote or hard-to-reach areas.
+Servers: Computers that host websites, applications, and services.
+Routers: Devices that direct data packets to their correct destinations.
 
-1. LAN
-2. MAN 
-3. WAN
 
-
+In wired way Internet is provided via these methods :
 1. LAN
 So, what is LAN, it is your local area network. A network that connects computers and devices within a limited area like a home, office, or school. Usually owned, controlled and managed by a single organization
 

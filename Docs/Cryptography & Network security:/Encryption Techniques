@@ -1,0 +1,33 @@
+
+# Encryption:
+Encryption is used to protect data from being stolen, changed, or compromised and works by scrambling data into a secret code that can only be unlocked with a unique digital key.
+
+## How encryption works :
+- It converts readable data (plaintext) into an unreadable format (ciphertext) using a mathematical algorithm and a secret key. Only authorized users with the correct decryption key can revert it to its original form. 
+- To decode the data back to plaintext requires the use of a decryption key, a string of numbers or a password also created by an algorithm. Secure encryption methods have such a large number of cryptographic keys that an unauthorized person can neither guess      (which one is correct), nor use a computer to easily calculate the correct string of characters by trying every potential combination.
+
+
+## TYPES OF ENCRYPTIONS :
+The two most common types of encryption algorithms are symmetric and asymmetric.
+
+1. Symmetric encryption: also known as a shared key or private key algorithm
+- Uses the same key for encryption and decryption. Symmetric key ciphers are considered less expensive to produce and do not take as much computing power to encrypt and decrypt, meaning there is less of delay in decoding the data.
+
+- The drawback is that if an unauthorized person gets their hands on the key, they will be able to decrypt any messages and data sent between the parties. As such, the transfer of the shared key needs to be encrypted with a different cryptographic key, leading to a cycle of dependency. 
+
+- Example Algorithms:
+AES (Advanced Encryption Standard) – Most secure, used in government and industry.
+DES (Data Encryption Standard) – Older and less secure.
+3DES (Triple DES) – More secure than DES but slower.
+
+
+2. Asymmetric encryption: also known as public-key cryptography
+- Uses two separate keys to encrypt and decrypt data. One is a public key shared among all parties for encryption. Anyone with the public key can then send an encrypted message, but only the holders of the second, private key can decrypt the message. 
+
+- Asymmetric encryption is considered more expensive to produce and takes more computing power to decrypt as the public encryption key is often large, between 1,024 and 2,048 bits. As such, asymmetric encryption is often not suited for large packets of data.
+
+- Example Algorithms:
+RSA (Rivest-Shamir-Adleman) – Used for secure data transmission.
+ECC (Elliptic Curve Cryptography) – Stronger security with smaller key sizes.
+Diffie-Hellman (DH) – Used for key exchange.
+

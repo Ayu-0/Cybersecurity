@@ -34,7 +34,11 @@ Disadvantages of it -
 
 
 II.) Coaxial Cable :
-The core is made up of copper conductors. Its purpose is the signal transmission. To prevent the copper conductor from overheating, an insulator is utilized. A metal conductor is braided around the insulator. It aids in blocking out any unwanted noise or allowing for any unwanted cross-talk between electrical signals. The setup is entirely covered in a protective plastic layer.
+- At the core thick copper is used, Its purpose is the signal transmission. 
+- To prevent the copper conductor from overheating, an insulator is on top of core is shielded
+- Typically copper braided around the insulator, It aid for blocking out any unwanted noise or allowing for any unwanted cross-talk between electrical signals. 
+- And lastly at very top it's entirely covered in a protective plastic layer.
+
 Usually used in broadcast medium ex: cable TV
 Segment length of 200m to 500m
 

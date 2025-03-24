@@ -21,7 +21,11 @@ AES (Advanced Encryption Standard) – Most secure, used in government and indus
 DES (Data Encryption Standard) – Older and less secure.
 3DES (Triple DES) – More secure than DES but slower.
 
-### Classical Encryption Technique -
+### AES -
+### DES - 
+### 3DES -
+
+## Classical Encryption Technique -
 
 - Classical encryption techniques are traditional methods used to secure information by converting plaintext into ciphertext. 
 - These methods, though outdated for modern security needs, are significant for understanding the evolution of cryptography. 
@@ -88,3 +92,8 @@ RSA (Rivest-Shamir-Adleman) – Used for secure data transmission.
 ECC (Elliptic Curve Cryptography) – Stronger security with smaller key sizes.
 Diffie-Hellman (DH) – Used for key exchange.
 
+## RSA (Rivest-Shamir-Adleman) -
+
+## ECC (Elliptic Curve Cryptography) -
+
+## Diffie-Hellman(DH) - 

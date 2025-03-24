@@ -410,15 +410,66 @@ Data	           Variable	     The actual payload being transmitted.
 
 
 ### Timers -
+- TCP uses timers to ensure that it doesn't delay data transmission 
+- It can detect failed connections, resends packets if no response and hold connection for delayed packets.
+- TCP implementation uses four timers – 
 
+I.) Retransmission Timers:  
+- When TCP sends a segment the timer starts and stops when the acknowledgment is received. 
+- Tracks packet ACKs, triggers resend if no ACK received by timeout.
+- Retransmission Timeout/RTO is the time TCP waits for an ACK before retransmitting a segment. It is calculated based on the Round Trip Time (RTT), which is the time taken for a segment to travel from the sender to the receiver and back as an ACK.
+- RTT three types -
+i.) Measured RTT (RTTm): The time taken for a segment(unit data) to reach its destination and be acknowledged.
+ii.) Smoothed RTT (RTTs): It weighted average of RTTm.
+Initially -> No value
+After the first measurement -> RTTs=RTTm
+After each measurement -> RTTs= (1-t)*RTTs + t*RTTm
+Note: t=1/8 (default if not given)
+
+iii.) Deviation RTT (RTTd): Measures the variability of RTT to adjust RTO dynamically. 
+Initially -> No value
+After the first measurement -> RTTd=RTTm/2
+After each measurement -> RTTd= (1-k)*RTTd + k*(RTTm-RTTs)
+Note: k=1/4 (default if not given)
+
+- The Retransmission Timeout (RTO) in TCP is calculated by adding 4 times the RTT deviation to the smoothed RTT. The formula is: 
+  RTO = Smoothed RTT + 4 * Deviation RTT
+
+?. How it handle Multiple Retransmissions:
+- If a segment is retransmitted and still no ACK is received, TCP may double the RTO for subsequent retransmissions, up to a maximum limit to prevent infinite waiting.
+
+- TCP uses a default RTO, typically around 3 seconds, If the connection is lost entirely, TCP will eventually terminate the connection
+
+
+II.) Persistent Timer:
+- Used to deal with the "zero-window-size deadlock" where the sender has data to send, but the receiver has advertised a zero-sized window, effectively stopping data transmission
+- When a TCP sender receives an ACK from the receiver with a zero-sized window, it means the receiver's buffer is full, and it can't accept any more data. 
+- The sender starts the persistent timer to prevent a deadlock situation where the sender is indefinitely blocked from sending data. 
+- When the persistent timer expires, the sender sends a special segment called a "probe" segment to the receiver. This probe segment contains a small amount of data (typically 1 byte) and is not acknowledged by the receiver. 
+- The receiver, upon receiving the probe, responds with an updated window size in its ACK
 
 ### Checksums -
 
 
-### Flow Control -
+### Flow Control 
+- It's a mechanism in TCP protocol to control excess data traffic to a network.
+- TCP uses a sliding window for flow control
+- It ensures the sender doesn't overwhelm the receiver by sending data faster than it can handle
+
+*/. Sliding Window Protocol -
+- The TCP sliding window determines the number of unacknowledged bytes, x, that one system can send to another. Two factors determine the value of x:
+i.) The size of the send buffer on the sending system
+ii.) The size and available space in the receive buffer on the receiving system
+
+Window Size - Indicates the amount of data (in bytes) the receiver is willing to accept at any given time.
+
+?. What's going on here 
+- TCP on the sending system must wait to send more data until all bytes in the current send buffer are acknowledged by TCP on the receiving system
+- On the receiving system, TCP stores received data in a receive buffer.
+- If the receive buffer is full, the receiving system advertises a receive window size of zero, and the sending system must wait to send more data
+- The available space in the receive buffer depends on how quickly data is read from the buffer by the receiving application.
 
 
-It's a mechanism in TCP protocol to control excess data traffic to a network.
 
 
 
@@ -435,7 +486,8 @@ ARP:ARP stands for Address Resolution Protocol. Its job is to find the hardware 
 
 
 4. Data-Link Layer :
-- 
+
+## Flow Control -
 
 
 

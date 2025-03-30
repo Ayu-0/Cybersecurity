@@ -79,9 +79,9 @@ Socket - It's a two way end-point communication between application layer proces
 
 ## Ports : 
 
- - In simple terms It allow computers to easily differentiate between different kinds of traffic.
- - IP addresses identify devices on a network, while port numbers pinpoint specific services or applications running on those devices, like If your home adderess is your IP address then the room in your house is like port numbers, each and every room have different use case, Isn't
- - Port numbers are 16-bit numerical identifiers (ranging from 0 to 65535) that serves as a logical endpoint for specific types of network communications
+- In simple terms It allow computers to easily differentiate between different kinds of traffic.
+- IP addresses identify devices on a network, while port numbers pinpoint specific services or applications running on those devices, like If your home adderess is your IP address then the room in your house is like port numbers, each and every room have different use case, Isn't
+- Port numbers are 16-bit numerical identifiers (ranging from 0 to 65535) that serves as a logical endpoint for specific types of network communications
 - Ports allow a single computer with one IP address to run multiple network services simultaneously. Each service "listens" on a specific port number.
 - Ports enable multiple connections to exist simultaneously between the same two computers. Eg, you might have several browser tabs open connecting to the same web server, but each connection uses different port numbers on your computer.
 
@@ -291,10 +291,10 @@ Each running application has a unique port number to distinguish it from others.
 
 Application	    Protocol	Default Port
 Web (HTTP)	    TCP	         80
-Email (SMTP)	TCP	         25
+Email (SMTP)	  TCP	         25
 FTP	            TCP	         21
-Streaming   	UDP	Dynamic (e.g, 5004)
-Online Gaming	UDP	Dynamic (e.g, 27015)
+Streaming   	  UDP	Dynamic (e.g, 5004)
+Online Gaming	  UDP	Dynamic (e.g, 27015)
 
 For example, if you watch a YouTube video while sending an email, the transport layer ensures:
 Video packets go to YouTube's video player (UDP, Port 5004).
@@ -321,10 +321,10 @@ UDP (User Datagram Protocol) → Fast but unreliable delivery.
 Feature	                TCP	                                                           UDP
 Connection-type	        Connection-Oriented	                                           Connectionless
 Reliability	            Ensures all packets arrive in order	                           No guarantee of delivery
-Flow Control	        Prevents sender from overwhelming receiver	                   No flow control
+Flow Control	          Prevents sender from overwhelming receiver	                   No flow control
 Congestion Control	    Avoids overloading the network	                               No congestion control
-Speed	                Slower due to reliability checks	                           Faster, used in real-time applications
-Examples            	(HTTP, HTTPS),(SMTP), (FTP)	                                   Online gaming,streaming, VoIP calls
+Speed	                  Slower due to reliability checks	                             Faster, used in real-time applications
+Examples            	  (HTTP, HTTPS),(SMTP), (FTP)	                                   Online gaming,streaming, VoIP calls
 
 A.) TCP (Transmission Control Protocol) -
 TCP is used when reliability is important, like sending emails, loading web pages, or downloading files.
@@ -358,6 +358,20 @@ Once data transfer is complete, TCP gracefully closes the connection:
 3️⃣ Server sends FIN → "I’m done too."
 4️⃣ Client replies with ACK → "Goodbye!"
 
+### Here's how TCP acknowledges packets :
+
+ Sequence Numbers: TCP assigns a unique sequence number to each byte of data sent. These sequence numbers help the receiver reorder data correctly and detect missing segments. Each TCP segment includes a sequence number that indicates the position of the first byte in that segment within the overall data stream.
+
+ ACKnowledgment Numbers: The receiver sends ACK packets back to the sender, indicating the next expected byte. The acknowledgment number in the TCP header acknowledges all data up to (but not including) that sequence number. This means the receiver has received all previous bytes in order without any gaps.
+
+ Selective ACKnowledgment (SACK): If the receiver detects missing or out-of-order packets, it can use the SACK option to tell the sender which segments have been received successfully and which are missing. This allows the sender to retransmit only the missing data instead of resending everything after a packet loss, improving efficiency.
+
+ Cumulative ACKnowledgment: In addition to selective acknowledgment, TCP also uses cumulative acknowledgment, meaning the receiver only acknowledges the highest contiguous sequence number received in order.
+  - If the receiver receives packets 1, 2, 4, and 5, it will send ACK = 3, meaning it is still waiting for packet 3 before acknowledging anything beyond it.
+  - The sender will keep receiving duplicate ACKs (ACK = 3) until it retransmits packet 3.
+  - Once packet 3 is received, the receiver will acknowledge the next expected byte (ACK = 6) since it now has packets 1, 2, 3, 4, and 5 in order.
+
+
 
 B.) UDP (User Datagram Protocol) - Fast but Unreliable
 UDP is used when speed is more important than accuracy, like video streaming, VoIP calls, and online gaming.
@@ -373,20 +387,20 @@ TCP would be too slow because retransmissions would cause lag.
 
 
 ## TCP Segment Structure (Header Fields) :
-Field	                     Size (bits)	        Description
+Field	                       Size (bits)	        Description
 Source Port	                 16	                    Identifies the sending application (process).
-Destination Port	         16	                    Identifies the receiving application (process).
+Destination Port	           16	                    Identifies the receiving application (process).
 Sequence Number	             32	                    Keeps track of the order of sent data.
-Acknowledgment Number	     32	                    Confirms received data (next expected byte).
+Acknowledgment Number	       32	                    Confirms received data (next expected byte).
 Data Offset (Header Length)	 4	                    Specifies the size of the TCP header.
-Reserved	                 3	                    Reserved for future use (always set to 0).
-Flags (Control Bits)	     9	                    Control signals (e.g., SYN, ACK, FIN, RST, etc.).
+Reserved	                   3	                    Reserved for future use (always set to 0).
+Flags (Control Bits)	       9	                    Control signals (e.g., SYN, ACK, FIN, RST, etc.).
 Window Size	                 16	                    Controls flow (how much data can be received at once).
-Checksum	                 16	                    Ensures data integrity (error checking).
+Checksum	                   16	                    Ensures data integrity (error checking).
 Urgent Pointer	             16	                    Used if the URG flag is set (priority data).
-Options	                     Variable	            Optional settings (e.g., Maximum Segment Size).
-Padding	                     Variable           	Ensures the header is multiples of 32 bits.
-Data	                     Variable	            The actual payload being transmitted.
+Options	                     Variable	              Optional settings (e.g., Maximum Segment Size).
+Padding	                     Variable             	Ensures the header is multiples of 32 bits.
+Data	                       Variable	              The actual payload being transmitted.
 
 ## TCP Flags (Control Bits)
 Flag	Meaning
@@ -402,12 +416,44 @@ Field	           Size(bits)    Description
 Source Port	       16	         Identifies the sending application.
 Destination Port   16	         Identifies the receiving application.
 Length	           16	         Specifies the total length of the UDP segment (header + data).
-Checksum	       16	         Error detection (optional; may be set to 0 if unused).
+Checksum	         16	         Error detection (optional; may be set to 0 if unused).
 Data	           Variable	     The actual payload being transmitted.
 
 
 ### Congesation control -
+- It prevents the overflow of packets in a network by managing the amount of data sent into the network.
+- When network overwhelms with too much data exceeding the network's capacity to handle it, causing bottlenecks, leads to network congestion, packet loss, and degraded performance.
+- When TCP connection established, sender doesn't overwhelm the network, it start slow and adjust acc. to network bandwidth
 
+- Congestion-avoidance mechanisms kick in when the network detects packet loss because TCP assumes that packet loss is a sign of network congestion. 
+- There are two ways in which TCP assumes that packets are getting lost:
+i. When there is a timeout
+ii. When the server receives duplicate ACKs for a data packet
+
+*/. Congesation Control Algorithms -
+
+I.) Leaky Bucket Algorithm : 
+- Based on an analogy of how a bucket with a constant leak will overflow if, either the average rate at which water is poured in exceeds the rate at which the bucket leaks. or if more water than the capacity of the bucket is poured in all at once. 
+- The leaky bucket algorithm is a method of congestion control where multiple packets are stored temporarily. These packets are sent to the network at a constant rate that is decided between the sender and the network. This algorithm is used to implement congestion control through traffic shaping in data networks.
+
+?. How it works -
+-  Consider a scenario where data traffic arrives at varying rates, such as 10 Mbps, 15 Mbps, or even 0 Mbps at different times. This inconsistent traffic rate is called bursty traffic.
+- When the sender wants to transmit packets, the packets are thrown into the bucket. These packets get accumulated in the bucket present at the network interface.
+- If the bucket is full, the packets are discarded by the buckets.
+- This bucket will leak at a constant rate. This means that the packets will be transmitted to the network at a constant rate. This constant rate is known as the Leak Rate or the Average Rate.
+- In this way, bursty traffic is converted into smooth, fixed traffic by the leaky bucket.
+- Queuing and releasing the packets at different intervals help in reducing network congestion and increasing overall performance.
+
+*/. Disadvantages -
+The output is uniform only if the bucket is non-empty. In case the bucket is empty or there is some packet loss, then the output can contain gaps.
+The packets are transferred only on ticks. If the packet size is large, then the queue gets filled up quickly as the effective transmission rate is low. This can lead to packet loss as the queue is of finite size.
+
+
+II.) Token Bucket Algorithm :
+- Imagine a bucket that can hold a certain number of tokens(unit of bytes or single packet). Tokens are added to the bucket at a fixed rate, representing the allowed bandwidth
+- In some applications, when large bursts arrive, the output is allowed to speed up. This calls for a more flexible algorithm, preferably one that never loses information. Therefore, a token bucket algorithm finds its uses in network traffic shaping or rate-limiting.
+- The core idea is - One bucket, steady token generation, ability to handle bursts within the bucket's token capacity
+- Tokens accumulate in a bucket at a defined rate, and every operation consumes a token. If the bucket is empty, further operations must wait until more tokens are added
 
 ### Timers -
 - TCP uses timers to ensure that it doesn't delay data transmission 
@@ -420,6 +466,7 @@ I.) Retransmission Timers:
 - Retransmission Timeout/RTO is the time TCP waits for an ACK before retransmitting a segment. It is calculated based on the Round Trip Time (RTT), which is the time taken for a segment to travel from the sender to the receiver and back as an ACK.
 - RTT three types -
 i.) Measured RTT (RTTm): The time taken for a segment(unit data) to reach its destination and be acknowledged.
+
 ii.) Smoothed RTT (RTTs): It weighted average of RTTm.
 Initially -> No value
 After the first measurement -> RTTs=RTTm
@@ -441,15 +488,31 @@ Note: k=1/4 (default if not given)
 - TCP uses a default RTO, typically around 3 seconds, If the connection is lost entirely, TCP will eventually terminate the connection
 
 
-II.) Persistent Timer:
+II.) Persistent Timer :
 - Used to deal with the "zero-window-size deadlock" where the sender has data to send, but the receiver has advertised a zero-sized window, effectively stopping data transmission
 - When a TCP sender receives an ACK from the receiver with a zero-sized window, it means the receiver's buffer is full, and it can't accept any more data. 
 - The sender starts the persistent timer to prevent a deadlock situation where the sender is indefinitely blocked from sending data. 
 - When the persistent timer expires, the sender sends a special segment called a "probe" segment to the receiver. This probe segment contains a small amount of data (typically 1 byte) and is not acknowledged by the receiver. 
 - The receiver, upon receiving the probe, responds with an updated window size in its ACK
+- TCP window probe means that the receiver has reduced his receive buffer (a.k.a. window) to zero, basically telling the sender to stop sending 
+
+III.) Keep-Alive-Timer :
+- It periodically checks if a connection is still active by sending small packets to the remote end to ensure the connection remains open and to detect if the connection has become unresponsive.
+- Each time the server hears from a client, it resets this timer. The time-out is usually 2 hours
+- If the server does not hear from the client after 2 hours, it sends a probe segment. If there is no response after 10 probes, each of which is 75 s apart, it assumes that the client is down and terminates the connection.
+
+IV.) Time-Wait Timer :
+- After a TCP connection is closed, the sockets remain in the TIME-WAIT state for a specific duration (typically 60 seconds) to ensure that any remaining packets in transit are received and acknowledged
+
+?. Why it's needed -
+It's possible for datagrams that are still making their way through the network to attempt to access the closed port, so the TIME-WAIT state helps prevent these packets from being misinterpreted or causing problems
+The timer prevents immediate reuse of the same socket pair, avoiding confusion between old and new connections. After 2MSL, the socket becomes available for reuse without risk of data corruption.
+
+
 
 ### Checksums -
-
+- 16-bit field in the TCP header used for error detection by verifying the integrity of the data, including the TCP header, data, and a pseudo-header, during transmission
+- 
 
 ### Flow Control 
 - It's a mechanism in TCP protocol to control excess data traffic to a network.

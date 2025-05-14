@@ -22,6 +22,7 @@ TCP/IP Model Layers :
 4. Data-Link
 5. Physical
 
+We'll study TCP/IP here -
 
 
 1. Application layer : 
@@ -67,7 +68,7 @@ Protocols help make sure that data moves smoothly and securely between devices o
 
 ## Sockets :
 
-Socket - It's a two way end-point communication between application layer process and transport layer. Sockets act like a pipe between the application layer and the transport layer, It's fucntion is to connects both layers.
+Socket - It's a two way end-point communication between application layer process and transport layer. Sockets act like a pipe between the application layer and the transport layer, Itss function is to connects both layers.
 
  - Applications (like web browsers, games, or chat apps) don’t directly talk to the network, they talk to the transport layer through sockets.
  - It enables multiple applications to share the same network.
@@ -125,7 +126,8 @@ In simply, If someone from the internet tries to connect to me on a specific por
 - By default, routers do not allow unsolicited incoming traffic from the internet for security reasons.
 Port forwarding creates a rule to direct incoming traffic on specific ports to a device on your private network.
 
-- When a request is made to your public IP on the specified port, the router forwards it to the designated private IP and port. This allows external access to services running on your private network.
+- When a request is made to your public IP on the specified port, the router forwards it to the designated private IP and port. 
+This allows external access to services running on your private network.
 
 - To use port forwarding assign a static IP to the device on your local network to ensure the port forwarding rule works consistently. Dynamic IP breaks the forwarding rule, cause each time it's changed.
 
@@ -455,6 +457,7 @@ II.) Token Bucket Algorithm :
 - The core idea is - One bucket, steady token generation, ability to handle bursts within the bucket's token capacity
 - Tokens accumulate in a bucket at a defined rate, and every operation consumes a token. If the bucket is empty, further operations must wait until more tokens are added
 
+
 ### Timers -
 - TCP uses timers to ensure that it doesn't delay data transmission 
 - It can detect failed connections, resends packets if no response and hold connection for delayed packets.
@@ -537,7 +540,11 @@ Window Size - Indicates the amount of data (in bytes) the receiver is willing to
 
 
 3. Network Layer :
+
+
 - It defines the protocols which are responsible for the logical transmission of data over the entire network. 
+- It exchange information through intermediate system called routers.
+- And the unit of information in network layer called packets.
 - The main protocols residing at this layer are as follows:
 
 IP:IP stands for Internet Protocol and it is responsible for delivering packets from the source host to the destination host by looking at the IP addresses in the packet headers. IP has 2 versions: IPv4 and IPv6. IPv4 is the one that most websites are using currently. But IPv6 is growing as the number of IPv4 addresses is limited in number when compared to the number of users.
@@ -547,8 +554,8 @@ ICMP:ICMP stands for Internet Control Message Protocol. It is encapsulated withi
 ARP:ARP stands for Address Resolution Protocol. Its job is to find the hardware address of a host from a known IP address. ARP has several types: Reverse ARP, Proxy ARP, Gratuitous ARP, and Inverse ARP.
 
 
-
 4. Data-Link Layer :
+
 
 ## Flow Control -
 

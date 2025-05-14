@@ -2,6 +2,7 @@
 # Encryption:
 Encryption is used to protect data from being stolen, changed, or compromised and works by scrambling data into a secret code that can only be unlocked with a unique digital key.
 
+Cipher - Cipher is basically you can say it's encryption algorithm
 ## How encryption works :
 - It converts readable data (plaintext) into an unreadable format (ciphertext) using a mathematical algorithm and a secret key. Only authorized users with the correct decryption key can revert it to its original form. 
 - To decode the data back to plaintext requires the use of a decryption key, a string of numbers or a password also created by an algorithm. Secure encryption methods have such a large number of cryptographic keys that an unauthorized person can neither guess      (which one is correct), nor use a computer to easily calculate the correct string of characters by trying every potential combination.

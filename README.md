@@ -1,2 +1,2 @@
 # Cybersecurity
-This is just my notes on cyber-security
+Just my notes on cyber-security

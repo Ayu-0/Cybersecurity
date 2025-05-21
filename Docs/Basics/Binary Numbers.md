@@ -1,5 +1,5 @@
 
-# What is Binary Numbers :
+## What is Binary Numbers :
 - Binary numbers are a fundamental concept in computing, representing data using only two digits: 0 and 1. 
 - This base-2 system is crucial for how computers process information.
 

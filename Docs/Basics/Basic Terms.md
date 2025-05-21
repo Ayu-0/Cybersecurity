@@ -1,4 +1,4 @@
-Basic and common terms terms and some important definitions :
+## Basics, common terms and some important definitions :
 
 Adware – Adware refers to any piece of software or application that displays advertisements on your computer.
 
@@ -169,5 +169,5 @@ Zero-Day – Zero-Day refers to a recently discovered vulnerability that hackers
 
 
 
-
+I just find these useful so I added it up here
 Source : https://www.metacompliance.com/cyber-security-terminology

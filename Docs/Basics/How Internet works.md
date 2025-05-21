@@ -14,7 +14,7 @@ Routers: Devices that direct data packets to their correct destinations.
 
 In wired way Internet is provided via these methods :
 1. LAN
-So, what is LAN, it is your local area network. A network that connects computers and devices within a limited area like a home, office, or school. Usually owned, controlled and managed by a single organization
+So, LAN is your local area network. A network that connects computers and devices within a limited area like a home, office, or school. Usually owned, controlled and managed by a single organization
 
 2. MAN
 Man means Metropolitan area network, Often used by municipalities, universities, or large organizations. Interconnects multiple LANs within a city. These are operated by large Internet Service Providers (ISPs).
@@ -49,8 +49,6 @@ It is commonly known as TCP/IP because the foundational protocols in the suite a
 TCP/IP, is a suite of communication protocols used to interconnect network devices on the internet. TCP/IP can also be used as a communications protocol in a private network (an intranet or an extranet).
 
 There are two IP protocols, TCP and UDP. There are 65335 ports that can be assigned to each. Per IANA, the first 1024 (0–1023, so count 0 as a port, too) ports are reserved for specific standardized services. So there are 2048 ports reserved for standardized protocols- 1024 for TCP, 1024 for UDP.
-
-The Internet works by using a protocol called TCP/IP, or Transmission Control Protocol/Internet Protocol. ... In base terms, TCP/IP allows one computer to talk to another computer via the Internet through compiling packets of data and sending them to right location.
 
 
 In simple terms :

@@ -1,9 +1,9 @@
 # Network Monitoring Tools :
 
-## 1. Check open ports :
+## 1. Check open ports (netstat) :
 
 
-## 2. Monitoring Network Traffic :
+## 2. Monitoring Network Traffic () :
 
 
 

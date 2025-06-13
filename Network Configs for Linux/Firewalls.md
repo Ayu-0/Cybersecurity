@@ -14,9 +14,13 @@ So how we do configure it ?
 
 OK there is basic guide to understand what to do :
 
-1. Want to bloack incoming or outgoing connection, just run 
-```sudo ufw default deny incoming```
-```sudo ufw default allow outgoing```
+1. Want to block incoming or outgoing connection, just run 
+```
+sudo ufw default deny incoming
+```
+```
+sudo ufw default allow outgoing
+```
 
 2. Allow basic services :
 - Allow SSH (important if using remote login)

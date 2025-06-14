@@ -62,6 +62,35 @@ sudo ufw deny from 203.0.113.4
 ```
 
 
+5. Deleting rules :
+
+- Delete a rule (e.g., rule no. 2)
+```
+sudo ufw delete 2
+```
+- Reset all UFW rules
+```
+sudo ufw reset
+```
+
+
+6. Logging and Monitoring :
+
+- Enable logging -
+```
+sudo ufw logging on
+```
+
+- Log location -
+```
+/var/log/ufw.log
+```
+
+7. Allow from subnet :
+```
+sudo ufw allow from 192.168.1.0/24 to any port 22
+```
+
 Sources for detailed guide -
 1. https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu
 2. 

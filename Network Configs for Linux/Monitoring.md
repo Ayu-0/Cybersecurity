@@ -22,3 +22,24 @@
 **Check for rootkits**
 
 - We'll use rkhunter to detect rootkits
+- So what does rkhunter check?
+It checks for:
+
+SHA256 hash changes
+Files commonly created by rootkits
+Executables with anomalous file permissions
+Suspicious strings in kernel modules, and
+Hidden files in system directories
+
+**How to scan?**
+run simple check cmmd -
+```
+sudo rkhunter -c
+```
+**Run this cmmd for more usage ``` sudo rkhunter -h```**
+
+**How to remove detected rootkits?**
+- There is no direct removal
+- So, we do have to remove manually
+- terminate the process and remoe them permanently
+

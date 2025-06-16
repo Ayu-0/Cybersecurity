@@ -1,9 +1,29 @@
 # Network Monitoring Tools :
 
-## 1. Check open ports (netstat) :
+## 1. Check open ports (netstat, nmap) :
+
+**Installation:**
+- For debian based :
+```
+sudo apt-get install net-tools
+```
+- For Arch :
+```
+sudo pacman -S inetutils
+```
+
+**Understanding netstat cmmd:**
 
 
-## 2. Monitoring Network Traffic () :
+**How to protect yourself?**
+- All you have to do is use ufw
+- Use firewall to bloack open ports
+- Stop/Disable unsed services
+
+**Understanding nmap cmmd:**
+- 
+
+## 2. Monitoring Network Traffic (nmap) :
 
 
 

@@ -20,10 +20,18 @@ sudo pacman -S inetutils
 - Use firewall to bloack open ports
 - Stop/Disable unsed services
 
-**Understanding nmap cmmd:**
+**Understanding nmap cmmd for open ports:**
 - 
 
-## 2. Monitoring Network Traffic (nmap) :
+Netstat monitors traffic flow and status and port statistics
+Netstat shows you information about your local system; a view from the inside.
+
+Nmap shows open ports, giving you a roadMAP to exploit vulnerabilities.
+Nmap shows you information about a remote system; a view from the outside.
+
+
+## 2. Monitoring Network Traffic (Sniffnet, Wireshark) :
+
 
 
 
@@ -63,3 +71,5 @@ sudo rkhunter -c
 - So, we do have to remove manually
 - terminate the process and remoe them permanently
 
+
+## How do we exactly know something is off?

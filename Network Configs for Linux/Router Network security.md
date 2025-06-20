@@ -5,10 +5,12 @@
 1. Change SSID and use strong WiFi Password
 2. Change router default Login Credentials
 3. Use strongest wifi encryptions, Enable WPA2 or WPA3 Encryption
-4. Update firmware regularly, should be up to date 
+4. Firmware should up to date 
+5. Disable SSID broadcast
 
 ## Advance Level -
 
 1. Disable remote management
-2. Configure Firewall and Other Security Settings :
+2. Disabling UPnP
+3. Configure Firewall and Other Security Settings :
 

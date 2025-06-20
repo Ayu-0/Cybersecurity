@@ -94,3 +94,9 @@ sudo ufw allow from 192.168.1.0/24 to any port 22
 Sources for detailed guide -
 1. https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu
 2. 
+
+
+
+
+## Use dnscrypt :
+
